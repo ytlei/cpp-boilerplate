@@ -17,3 +17,4 @@ Simple starter C++ project with:
 $ git clone --recursive https://github.com/dpiet/cpp-boilerplate.git
 ```
 
+@test travis
