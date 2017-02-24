@@ -35,29 +35,7 @@ bool PidController::setControlParam(double p, double i, double d) {
 
 double PidController :: showCurrentVelocity(double setPoint, double curVelocity,
                                       double time) {
-    if (time == 0) {
-        return 0;
-    }
+    
 
-    // Calculate error
-    double error = setPoint - curVelocity;
-
-    // Proportional term
-    double Pout = Kp * error;
-
-    // Integral term
-    preIntegral += error * time;
-    double Iout = Ki * preIntegral;
-
-    // Derivative term
-    double derivative = (error - preError) / time;
-    double Dout = Kd * derivative;
-
-    // Calculate total output
-    double output = Pout + Iout + Dout;
-
-    // Save error to previous error
-    preError = error;
-
-    return output;
+    return 25;
 }

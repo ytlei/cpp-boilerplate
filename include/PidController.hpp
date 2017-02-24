@@ -14,16 +14,18 @@
  *   @author	Yi-ting Lei
  *   @date	2017/2/17
  */
-#ifndef CLASS_PIDCONTROLLER
-#define CLASS_PIDCONTROLLER
+#ifndef INCLUDE_PIDCONTROLLER_HPP_
+#define INCLUDE_PIDCONTROLLER_HPP_
 
 class PidController {
-		double kp, ki, kd;
+		double Kp, Ki, Kd;
 		double newVelocity, targetVelocity, actualVelocity;
+		double preError;                                 ///< previous error
+     		double preIntegral;                              ///< previous integral
 	public:
-		//PidController();
-		void setTargetVelocity(double targetV) ; 	///< set the target velocity
-		double showCurrentVelocity() ;	///< show current velocity
+		
+		bool setControlParam(double, double, double) ; 	///< set the pid parameters
+		double showCurrentVelocity(double, double, double) ;	///< show current velocity
 };
 
 #endif

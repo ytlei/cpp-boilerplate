@@ -25,8 +25,8 @@
  *   @param  none
  *   @return none
 */
-TEST(testSetTargetVelocity, should_pass) {
-    PidController pid;
+TEST(testSetControlParam, should_pass) {
+    PIDController pid;
     ASSERT_TRUE(pid.setControlParam(1, 1, 1));
 }
 
@@ -38,9 +38,9 @@ TEST(testSetTargetVelocity, should_pass) {
  *   @param  none
  *   @return none
 */
-TEST(testShowVelocity, should_pass) {
-    PidController pid;
+TEST(testComputeVelocity, should_pass) {
+    PIDController pid;
     pid.setControlParam(1, 1, 1);
-    ASSERT_EQ(pid.showCurrentVelocity(25, 20, 1), 15);
-    ASSERT_EQ(pid.showCurrentVelocity(25, 20, 0), 0);
+    ASSERT_EQ(pid.computeVelocity(25, 20, 1), 15);
+    ASSERT_EQ(pid.computeVelocity(25, 20, 0), 0);
 }
