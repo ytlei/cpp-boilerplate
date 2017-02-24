@@ -22,12 +22,24 @@
 #include <PidController.cpp>
 using std::cout;
 using std::endl;
-
+using std::cin;
 int main() {
+	double kp = 0;
+	double ki = 0;
+	double kd = 0;
+	double setPoint = 5;
+	double initialVel = 0;
+	double dTime = 0;
 	class PidController pid;
-	pid.setTargetVelocity(5);
-	pid.setInitialVelocity(0); //Initial Velocity
-	pid.setInitialConditions(.5,0.05,0.0001,.1); // kp, ki, kd, dt
+    	cout << "Please input Kp, Ki, Kd for PID control" << endl;
+    	cin >> kp >> ki >> kd;
+
+    	cout << "Please input setpoint, initial velocity, delta time" << endl;
+    	cin >> setPoint >> initialVel >> dTime;
+
+	pid.setTargetVelocity(setPoint);
+	pid.setInitialVelocity(initialVel); //Initial Velocity
+	pid.setInitialConditions(kp,ki,kd,dTime); // kp, ki, kd, dt
 	cout << pid.getActualVelocity() << endl;
 	cout << "------------" << endl;
     for (int i = 0; i < 200; i++) {
