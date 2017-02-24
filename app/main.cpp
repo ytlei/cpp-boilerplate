@@ -12,16 +12,30 @@
  *
  *   @author	Yi-ting Lei
  *   @date	2017/2/17
+ *   @author    Sherif Shazly
+ *   @date	2017/2/24
  */
 
 #include <iostream>
-#include <lib.hpp>
+//#include <lib.hpp>
+//#include </home/viki/cppSherif/cpp-boilerplate/include/PidController.cpp>
 #include <PidController.cpp>
-
 using std::cout;
+using std::endl;
 
 int main() {
 	class PidController pid;
-	cout << pid.showCurrentVelocity();
+	pid.setTargetVelocity(5);
+	pid.setInitialVelocity(0); //Initial Velocity
+	pid.setInitialConditions(.5,0.05,0.0001,.1); // kp, ki, kd, dt
+	cout << pid.getActualVelocity() << endl;
+	cout << "------------" << endl;
+    for (int i = 0; i < 200; i++) {
+        double Velocity = pid.getNextVelocity(); // Calculate Next Velocity Value
+	pid.setActualVelocity(Velocity);
+	cout << pid.getActualVelocity() << endl;
+	cout << "------------" << endl;
+    }
+
     return 0;
 }
