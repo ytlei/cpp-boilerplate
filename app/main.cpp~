@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include <lib.hpp>
-#include <PidController.cpp>
+#include <PidController.hpp>
 
 using std::cout;
 

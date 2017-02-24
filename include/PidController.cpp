@@ -16,12 +16,21 @@
 
 #include <iostream>
 #include <lib.hpp>
-#include <PidController.cpp>
+#include <PidController.hpp>
+/*
+PidController::PidController() {
+	kp = 1;
+	ki = 1;
+	kd = 1;
+	newVelocity = 0;
+	targetVelocity = 0;
+	actualVelocity = 0;
+}
+*/
+void PidController :: setTargetVelocity(double targetV) {
+	targetVelocity = targetV;
+} 
 
-using std::cout;
-
-int main() {
-	class PidController pid;
-	cout << pid.showCurrentVelocity();
-    return 0;
+double PidController :: showCurrentVelocity() {
+	return 1;
 }

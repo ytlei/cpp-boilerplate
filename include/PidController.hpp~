@@ -21,7 +21,7 @@ class PidController {
 		double kp, ki, kd;
 		double newVelocity, targetVelocity, actualVelocity;
 	public:
-		//PidController();
+		PidController();
 		void setTargetVelocity(double targetV) ; 	///< set the target velocity
 		double showCurrentVelocity() ;	///< show current velocity
 };
