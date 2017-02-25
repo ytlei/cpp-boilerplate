@@ -13,19 +13,25 @@
  *
  *   @author	Yi-ting Lei
  *   @date	2017/2/17
+ *   @author    Sherif Shazly
+ *   @date	2017/2/24
  */
-#ifndef INCLUDE_PIDCONTROLLER_HPP_
-#define INCLUDE_PIDCONTROLLER_HPP_
+#ifndef CLASS_PIDCONTROLLER
+#define CLASS_PIDCONTROLLER
 
 class PidController {
-		double Kp, Ki, Kd;
-		double newVelocity, targetVelocity, actualVelocity;
-		double preError;                                 ///< previous error
-     		double preIntegral;                              ///< previous integral
+	private:
+		double kp, ki, kd, dt;
 	public:
-		
-		bool setControlParam(double, double, double) ; 	///< set the pid parameters
-		double showCurrentVelocity(double, double, double) ;	///< show current velocity
+		double initialVelocity, targetVelocity, actualVelocity, integral, prevError;
+		//PidController();
+		void setTargetVelocity(double targetV) ; 	///< set the target velocity
+		void setInitialVelocity(double initialV) ; 	///< set the initial velocity
+		void setActualVelocity(double actualV) ; 	///< set the initial velocity
+		bool setControlParam(double p, double i, double d, double _dt) ; 	///< set the pid parameters
+		double getNextVelocity(); ///< calculate the velocity for the next timestep (currentVelocity + increment)
+		double getActualVelocity();	///< show current (actual) velocity
+		double showCurrentVelocity(double setPoint, double curVelocity,double time) ;	///< show current velocity
 };
 
 #endif
