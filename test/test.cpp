@@ -16,8 +16,7 @@
 */
 
 #include <gtest/gtest.h>
-#include "PidController.hpp"
-
+#include <PidController.cpp>
 /**
  *   @brief  Test the set control parameter function of
  *           PIDController
@@ -27,7 +26,7 @@
 */
 TEST(testSetTargetVelocity, should_pass) {
     PidController pid;
-    ASSERT_TRUE(pid.setControlParam(1, 1, 1));
+    ASSERT_TRUE(pid.setControlParam(.1, .1, .1, .1));
 }
 
 
@@ -40,7 +39,7 @@ TEST(testSetTargetVelocity, should_pass) {
 */
 TEST(testShowVelocity, should_pass) {
     PidController pid;
-    pid.setControlParam(1, 1, 1);
-    ASSERT_EQ(pid.showCurrentVelocity(25, 20, 1), 15);
-    ASSERT_EQ(pid.showCurrentVelocity(25, 20, 0), 0);
+    pid.setControlParam(.1, .1, .1, .1);
+    ASSERT_EQ(pid.showCurrentVelocity(25, 20, 1), 25);
+    ASSERT_EQ(pid.showCurrentVelocity(25, 20, 0), 25);
 }
